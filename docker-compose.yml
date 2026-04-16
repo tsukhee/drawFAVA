@@ -1,15 +1,16 @@
 services:
    jupyter:
-      image: nben/drawfava:2026-04-01
+      image: nben/drawfava:2026-04-04
+      platform: linux/arm64
       ports:
          - "127.0.0.1:${DRAWFAVA_PORT:-8181}:${DRAWFAVA_PORT:-8181}"
       hostname: localhost
       environment:
-        NB_UID: "${UID:-1000}:${GID:-1000}"
-        CHOWN_HOME: "yes"
-        JUPYTER_TOKEN: ""
-        JUPYTER_PORT: "${DRAWFAVA_PORT:-8181}"
-        DOCKER_STACKS_JUPYTER_CMD: "notebook"
+         NB_UID: "${UID:-1000}:${GID:-1000}"
+         CHOWN_HOME: "yes"
+         JUPYTER_TOKEN: ""
+         JUPYTER_PORT: "${DRAWFAVA_PORT:-8181}"
+         DOCKER_STACKS_JUPYTER_CMD: "notebook"
       volumes:
          - ${PWD}/annotations:/save:rw
          - ${PWD}/cache:/cache:rw
